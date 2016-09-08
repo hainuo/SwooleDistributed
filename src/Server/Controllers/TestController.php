@@ -192,6 +192,7 @@ class TestController extends Controller
 
     public function http_test_request()
     {
+
         print_r($this->http_input->get('id'));
         $this->http_output->end('ok');
     }

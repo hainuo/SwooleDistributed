@@ -31,6 +31,7 @@ abstract class SwooleHttpServer extends SwooleServer
         }
         //开启一个http服务器
         $this->server = new \swoole_http_server($this->http_socket_name, $this->http_port);
+//        $this->server->set(['open_tcp_keepalive' => 1,]);
         $this->server->on('Start', [$this, 'onSwooleStart']);
         $this->server->on('WorkerStart', [$this, 'onSwooleWorkerStart']);
         $this->server->on('WorkerStop', [$this, 'onSwooleWorkerStop']);
@@ -44,7 +45,7 @@ abstract class SwooleHttpServer extends SwooleServer
         $set = $this->setServerSet();
         $set['daemonize'] = self::$daemonize ? 1 : 0;
         $this->server->set($set);
-        $this->port =  $this->server->listen($this->socket_name, $this->port, $this->socket_type);
+        $this->port =  $this->server->listen($this->socket_name, $this->port, $this->socket_type | SWOOL_SSL);
         $this->port->set($set);
         $this->port->on('connect', [$this, 'onSwooleConnect']);
         $this->port->on('receive', [$this, 'onSwooleReceive']);

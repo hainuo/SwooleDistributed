@@ -20,11 +20,11 @@ $config['timerTask'][] = [
     'interval_time'=>'30'
 ];
 $config['timerTask'][] = [
-    'task_name'=>'TestTask',
-    'method_name'=>'testTimer',
+    'task_name'=>'AppTask',
+    'method_name'=>'testTask',
     'start_time'=>'Y-m-d 00:00:00',
     'end_time'=>'Y-m-d 23:59:59',
-    'interval_time'=>'2',
+    'interval_time'=>'200',
 ];
 
 return $config;

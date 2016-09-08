@@ -13,4 +13,5 @@ $config['tcp']['method_prefix'] = '';
  * http访问时方法的前缀
  */
 $config['http']['method_prefix'] = 'http_';
+//$config['http'][]=12321;
 return $config;

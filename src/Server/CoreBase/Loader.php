@@ -25,11 +25,14 @@ class Loader
         $this->_model_factory = ModelFactory::getInstance();
     }
 
-    /**
-     * 获取一个model
-     * @param $model string
-     * @param $parent CoreBase
-     */
+	/**
+	 * 获取一个model
+	 *
+	 * @param $model  string
+	 * @param $parent CoreBase
+	 *
+	 * @return mixed|null
+	 */
     public function model($model, $parent)
     {
         if (empty($model)) {
@@ -40,11 +43,14 @@ class Loader
         return $model_instance;
     }
 
-    /**
-     * 获取一个task
-     * @param $task
-     * @return TaskProxy
-     */
+	/**
+	 * 获取一个task
+	 *
+	 * @param $task
+	 *
+	 * @return \Server\CoreBase\TaskProxy
+	 * @throws \Server\CoreBase\SwooleException
+	 */
     public function task($task)
     {
         if (empty($task)) {

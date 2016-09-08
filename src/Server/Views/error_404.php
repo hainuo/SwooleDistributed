@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>404 Page Not Found</title>
+<title>404 Page Not Found server</title>
 <style type="text/css">
 
 ::selection { background-color: #E13300; color: white; }
@@ -57,7 +57,7 @@ p {
 <body>
 	<div id="container">
 		<h1><?=$this->e($controller)?></h1>
-		<?=$this->e($message)?>
+		<?=$this->e($message)?> server
 	</div>
 </body>
 </html>
