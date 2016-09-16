@@ -9,6 +9,7 @@
 namespace Server\DataBase;
 
 
+use Server\CoreBase\CoroutineNull;
 use Server\CoreBase\ICoroutineBase;
 
 class RedisCoroutine implements ICoroutineBase
@@ -19,9 +20,11 @@ class RedisCoroutine implements ICoroutineBase
     public $redisAsynPool;
     public $name;
     public $arguments;
-    public $result = null;
-    public function __construct($redisAsynPool,$name, $arguments)
+    public $result;
+
+    public function __construct($redisAsynPool, $name, $arguments)
     {
+        $this->result = CoroutineNull::getInstance();
         $this->redisAsynPool = $redisAsynPool;
         $this->name = $name;
         $this->arguments = $arguments;
@@ -40,4 +43,9 @@ class RedisCoroutine implements ICoroutineBase
     {
         return $this->result;
     }
+}
+
+class RedisNull
+{
+
 }

@@ -10,13 +10,13 @@ namespace app\Models;
 
 
 use Server\CoreBase\Model;
-use Server\Tasks\TestTask;
-//use Tutorial\AddressBookProtos\Person;
+use Tutorial\AddressBookProtos\Person;
 
 class AppModel extends Model
 {
-    public function test(){
-//        $person = new Person();
+    public function test()
+    {
+        $person = new Person();
         return 123456;
     }
 }

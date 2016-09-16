@@ -22,6 +22,8 @@ abstract class AsynPool implements IAsynPool
     protected $server;
     protected $swoole_server;
     protected $token = 0;
+    //避免爆发连接的锁
+    protected $prepareLock = false;
     /**
      * @var AsynPoolManager
      */
@@ -48,6 +50,7 @@ abstract class AsynPool implements IAsynPool
         }
         return $token;
     }
+
     /**
      * 分发消息
      * @param $data
@@ -56,7 +59,7 @@ abstract class AsynPool implements IAsynPool
     {
         $callback = $this->callBacks[$data['token']];
         unset($this->callBacks[$data['token']]);
-        if($callback!=null) {
+        if ($callback != null) {
             call_user_func($callback, $data['result']);
         }
     }
@@ -65,7 +68,7 @@ abstract class AsynPool implements IAsynPool
      * @param $swoole_server
      * @param $asyn_manager
      */
-    public function server_init($swoole_server,$asyn_manager)
+    public function server_init($swoole_server, $asyn_manager)
     {
         $this->config = $swoole_server->config;
         $this->swoole_server = $swoole_server;
@@ -86,6 +89,7 @@ abstract class AsynPool implements IAsynPool
      */
     public function pushToPool($client)
     {
+        $this->prepareLock = false;
         $this->pool->push($client);
         if (count($this->commands) > 0) {//有残留的任务
             $command = $this->commands->shift();

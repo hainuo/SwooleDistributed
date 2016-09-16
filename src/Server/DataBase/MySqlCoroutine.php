@@ -9,6 +9,7 @@
 namespace Server\DataBase;
 
 
+use Server\CoreBase\CoroutineNull;
 use Server\CoreBase\ICoroutineBase;
 
 class MySqlCoroutine implements ICoroutineBase
@@ -19,9 +20,11 @@ class MySqlCoroutine implements ICoroutineBase
     public $mysqlAsynPool;
     public $bind_id;
     public $sql;
-    public $result = null;
+    public $result;
+
     public function __construct($_mysqlAsynPool, $_bind_id = null, $_sql = null)
     {
+        $this->result = CoroutineNull::getInstance();
         $this->mysqlAsynPool = $_mysqlAsynPool;
         $this->bind_id = $_bind_id;
         $this->sql = $_sql;
@@ -32,7 +35,7 @@ class MySqlCoroutine implements ICoroutineBase
 
     public function send($callback)
     {
-        $this->mysqlAsynPool->query($callback,$this->bind_id,$this->sql);
+        $this->mysqlAsynPool->query($callback, $this->bind_id, $this->sql);
     }
 
     public function getResult()
