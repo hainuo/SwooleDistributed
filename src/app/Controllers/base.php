@@ -65,11 +65,15 @@ class base extends Controller
     public function json($data = [])
     {
         if (empty($data))
-            $data = ['code' => 0, 'message' => '数据获取失败！'];
+            $return = ['code' => 0, 'message' => '数据获取失败！'];
         else {
-            $data['code'] = 1;
-            $data['message'] = '数据获取成功！';
+            $return['code'] = 1;
+            $return['message'] = '数据获取成功！';
+            $return['data']=$data;
         }
-        $this->http_output->response->write($data);
+        $this->http_output->set_header('Content-type','application/json;charset=utf-8');
+        $this->http_output->set_header('Access-Control-Allow-Origin','*');
+        $this->http_output->set_header('Access-Control-Allow-Headers','content-type,accept');
+        $this->http_output->end(\GuzzleHttp\json_encode($return));
     }
 }
