@@ -61,4 +61,15 @@ class base extends Controller
             $this->http_output->response->write($value);
         }
     }
+
+    public function json($data = [])
+    {
+        if (empty($data))
+            $data = ['code' => 0, 'message' => '数据获取失败！'];
+        else {
+            $data['code'] = 1;
+            $data['message'] = '数据获取成功！';
+        }
+        $this->http_output->response->write($data);
+    }
 }
