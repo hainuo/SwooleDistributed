@@ -4,6 +4,7 @@ namespace Server;
 use Noodlehaus\Exception;
 use Server\Client\Client;
 use Server\CoreBase\ControllerFactory;
+use Server\CoreBase\InotifyProcess;
 use Server\CoreBase\Loader;
 use Server\CoreBase\SwooleException;
 use Server\DataBase\AsynPoolManager;
@@ -168,8 +169,6 @@ class SwooleDistributedServer extends SwooleHttpServer
         $this->socket_name = $this->config['server']['socket'];
         $this->port = $this->config['server']['port'];
         $this->user = $this->config->get('server.set.user', '');
-        $this->worker_num = $this->config['server']['set']['worker_num'];
-        $this->task_num = $this->config['server']['set']['task_worker_num'];
         $this->send_use_task_num = $this->config['server']['send_use_task_num'];
     }
 
@@ -182,6 +181,8 @@ class SwooleDistributedServer extends SwooleHttpServer
         $set = $this->config->get('server.set', []);
         $set = array_merge($set, $this->probuf_set);
         $set = array_merge($set, $this->overrideSetConfig);
+        $this->worker_num = $set['worker_num'];
+        $this->task_num = $set['task_worker_num'];
         return $set;
     }
 
@@ -195,14 +196,23 @@ class SwooleDistributedServer extends SwooleHttpServer
         $this->uid_fd_table->column('fd', \swoole_table::TYPE_INT, 8);
         $this->uid_fd_table->create();
         //创建redis，mysql异步连接池进程
-        if ($this->config['asyn_process_enable']) {//代表启动单独进程进行管理
+        if ($this->config->get('asyn_process_enable',false)) {//代表启动单独进程进行管理
             $this->pool_process = new \swoole_process(function ($process) {
+                $process->name('SWD-ASYN');
                 $this->asnyPoolManager = new AsynPoolManager($process, $this);
                 $this->asnyPoolManager->event_add();
                 $this->asnyPoolManager->registAsyn(new RedisAsynPool());
                 $this->asnyPoolManager->registAsyn(new MysqlAsynPool());
             }, false, 2);
             $this->server->addProcess($this->pool_process);
+        }
+        //reload监控进程
+        if ($this->config->get('auto_reload_enable',false)) {//代表启动单独进程进行reload管理
+            $reload_process = new \swoole_process(function ($process) {
+                $process->name('SWD-RELOAD');
+                new InotifyProcess($this->server);
+            }, false, 2);
+            $this->server->addProcess($reload_process);
         }
         if ($this->config->get('use_dispatch')) {
             //创建dispatch端口用于连接dispatch
