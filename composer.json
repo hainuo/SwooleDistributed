@@ -1,12 +1,14 @@
 {
   "require": {
-    "monolog/monolog": "2.0.x-dev",
+    "monolog/monolog": "^1.21",
     "hassankhan/config": "~0.10",
     "voku/anti-xss": "2.0.1",
     "league/plates": "3.*",
     "protobuf-php/protobuf": "~0.1.2",
     "protobuf-php/protobuf-plugin": "^0.1.2",
-    "php": ">=7.0.0"
+    "php": ">=7.0.0",
+    "lcobucci/jwt": "4.0.x-dev",
+    "overtrue/wechat": "~3.1"
   },
   "autoload": {
     "psr-4": {

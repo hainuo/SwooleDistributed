@@ -70,6 +70,7 @@ class Controller extends CoreBase
     public function __construct()
     {
         parent::__construct();
+//        $this->server->reload();
         $this->http_input = new HttpInput();
         $this->http_output = new HttpOutput($this);
         $this->redis_pool = get_instance()->redis_pool;

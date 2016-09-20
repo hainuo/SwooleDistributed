@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "913bc328ce34408b2a8c4cd6435dc6ba",
-    "content-hash": "9ddc7e66c967240d45033d8b44edb010",
+    "hash": "19da25a1995d06d67bd6350db057966c",
+    "content-hash": "ce14580ffe8d50dd00e10e5f60453254",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -415,6 +415,116 @@
             "time": "2014-11-20 16:49:30"
         },
         {
+            "name": "lcobucci/jose-parsing",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lcobucci/jose-parsing.git",
+                "reference": "056085468c867e62fd1cb3b93f001850f0a0e833"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lcobucci/jose-parsing/zipball/056085468c867e62fd1cb3b93f001850f0a0e833",
+                "reference": "056085468c867e62fd1cb3b93f001850f0a0e833",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~7.0"
+            },
+            "require-dev": {
+                "phpmd/phpmd": "~2.3",
+                "phpunit/phpunit": "~5.1",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lcobucci\\Jose\\Parsing\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Luís Otávio Cobucci Oblonczyk",
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A basic Base64Url and JSON encoding/decoding implementation",
+            "keywords": [
+                "JOSE",
+                "base64url"
+            ],
+            "time": "2015-12-20 23:15:12"
+        },
+        {
+            "name": "lcobucci/jwt",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lcobucci/jwt.git",
+                "reference": "66ff9d66ecc07d6482d25ede9ca30fe9438691c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/66ff9d66ecc07d6482d25ede9ca30fe9438691c9",
+                "reference": "66ff9d66ecc07d6482d25ede9ca30fe9438691c9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "lcobucci/jose-parsing": "~2.1",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "mdanter/ecc": "~0.4",
+                "mikey179/vfsstream": "~1.6",
+                "phpmd/phpmd": "~2.4",
+                "phpunit/php-invoker": "~1.1",
+                "phpunit/phpunit": "~5.5",
+                "squizlabs/php_codesniffer": "~2.6"
+            },
+            "suggest": {
+                "mdanter/ecc": "Required to use Elliptic Curves based algorithms."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lcobucci\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Luís Otávio Cobucci Oblonczyk",
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to work with JSON Web Token and JSON Web Signature",
+            "keywords": [
+                "JWS",
+                "jwt"
+            ],
+            "time": "2016-09-08 08:59:58"
+        },
+        {
             "name": "league/plates",
             "version": "3.1.1",
             "source": {
@@ -468,7 +578,7 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.x-dev",
+            "version": "1.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
@@ -981,22 +1091,30 @@
         },
         {
             "name": "psr/log",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b"
+                "reference": "5277094ed527a1c4477177d102fe4c53551953e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/fe0936ee26643249e916849d48e3a51d5f5e278b",
-                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/5277094ed527a1c4477177d102fe4c53551953e0",
+                "reference": "5277094ed527a1c4477177d102fe4c53551953e0",
                 "shasum": ""
             },
+            "require": {
+                "php": ">=5.3.0"
+            },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
             "autoload": {
-                "psr-0": {
-                    "Psr\\Log\\": ""
+                "psr-4": {
+                    "Psr\\Log\\": "Psr/Log/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1010,12 +1128,13 @@
                 }
             ],
             "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
             "keywords": [
                 "log",
                 "psr",
                 "psr-3"
             ],
-            "time": "2012-12-21 11:40:51"
+            "time": "2016-09-19 16:02:08"
         },
         {
             "name": "symfony/console",
@@ -1633,10 +1752,12 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "monolog/monolog": 20
+        "lcobucci/jwt": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=7.0.0"
+    },
     "platform-dev": []
 }

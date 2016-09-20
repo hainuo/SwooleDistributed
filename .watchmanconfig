@@ -1,0 +1,10 @@
+[
+  "trigger",
+  "/Users/fengliu/weaseplatform",
+  {
+    "name":"reload",
+    "command": [
+      "php start_swoole_server.php reload"
+    ]
+  }
+]

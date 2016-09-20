@@ -60,5 +60,5 @@ $config['asyn_process_enable'] = false;
 $config['use_dispatch'] = false;
 
 //是否启用自动reload
-$config['auto_reload_enable'] = true;
+$config['auto_reload_enable'] = false;
 return $config;
