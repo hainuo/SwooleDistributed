@@ -7,7 +7,7 @@
  */
 require_once __DIR__ . '/vendor/autoload.php';
 
-$ip = '192.168.21.184';
+$ip = '127.0.0.1';
 $port = 9093;
 
 function encode($buffer)
@@ -51,7 +51,8 @@ function connect($cli){
     $message->setCmdMethod(\app\Protobuf\CMD_METHOD::Login());
     $message->setCmdService(\app\Protobuf\CMD_SERVICE::Account());
     $message->setToken(time());
-    $cli->send(encode($message->toStream()->getContents()));
+    $length=$cli->send(encode($message->toStream()->getContents()));
+    print_r($length);
 }
 function receive($cli, $data){
     print_r('get');

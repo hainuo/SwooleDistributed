@@ -9,6 +9,6 @@
 $config['redis']['ip'] = 'localhost';
 $config['redis']['port'] = 6379;
 $config['redis']['select'] = 1;
-$config['redis']['password'] = 'hainuo';
+//$config['redis']['password'] = '';
 $config['redis']['asyn_max_count'] = 10;
 return $config;

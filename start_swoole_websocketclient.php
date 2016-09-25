@@ -5,7 +5,7 @@
  * Date: 16-6-17
  * Time: 下午1:56
  */
-$worker_num = 100;
+$worker_num = 1000;
 $total_num = 100000;
 $ips = ['127.0.0.1'];
 $GLOBALS['total_num'] = $total_num;

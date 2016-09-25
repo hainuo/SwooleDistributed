@@ -21,7 +21,6 @@ class NormalRoute implements IRoute
     /**
      * 设置反序列化后的数据 Object
      * @param $data
-     * @return \stdClass
      */
     public function handleClientData($data)
     {
