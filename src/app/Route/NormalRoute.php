@@ -6,7 +6,7 @@
  * Time: 下午3:11
  */
 
-namespace Server\Route;
+namespace app\Route;
 
 
 class NormalRoute implements IRoute

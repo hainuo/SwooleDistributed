@@ -6,7 +6,7 @@
  * Time: 下午2:43
  */
 
-namespace Server\Pack;
+namespace app\Pack;
 
 use app\Protobuf\Message;
 

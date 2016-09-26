@@ -28,6 +28,7 @@ $config['server']['send_use_task_num'] = 20;
 $config['server']['log_path'] = '/../../';
 $config['server']['log_max_files'] = 15;
 $config['server']['log_level'] = \Monolog\Logger::DEBUG;
+//ProtoPack JsonPack 可以选择 具体见server/Pack目录下面除了基类IPack.php之外的几个
 $config['server']['pack_tool'] = 'JsonPack';
 $config['server']['route_tool'] = 'NormalRoute';
 $config['server']['set'] = [
