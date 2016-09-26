@@ -8,6 +8,7 @@
 
 namespace app\Route;
 
+use Server\Route\IRoute;
 
 class NormalRoute implements IRoute
 {
@@ -66,5 +67,10 @@ class NormalRoute implements IRoute
     public function getPath()
     {
         return $this->client_data->path;
+    }
+
+    public function getParams()
+    {
+        return $this->client_data->params??null;
     }
 }
