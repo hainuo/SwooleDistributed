@@ -8,6 +8,7 @@
 /**
  * http服务器设置
  */
+$config['http_server']['enable'] = true;
 $config['http_server']['socket'] = '0.0.0.0';
 $config['http_server']['port'] = 8081;
 /**
@@ -17,11 +18,17 @@ $config['websocket']['enable'] = true;
 /*WEBSOCKET_OPCODE_TEXT = 0x1，UTF-8文本字符数据
 WEBSOCKET_OPCODE_BINARY = 0x2，二进制数据*/
 $config['websocket']['opcode'] = WEBSOCKET_OPCODE_BINARY;
+
+/**
+ * tcp设置
+ */
+$config['tcp']['enable'] = true;
+$config['tcp']['socket'] = '0.0.0.0';
+$config['tcp']['port'] = 9093;
+
 /**
  * 服务器设置
  */
-$config['server']['socket'] = '0.0.0.0';
-$config['server']['port'] = 9093;
 $config['server']['dispatch_port'] = 9991;
 $config['server']['send_use_task_num'] = 20;
 $config['server']['log_path'] = '/../../';
@@ -59,13 +66,13 @@ $config['dispatch_server']['set'] = [
 
 //主从redis提高读的速度
 //启动这个服务一定确保dispatch服务器上一定有一个redis只读服务器
-$config['dispatch_server']['redis_slave'] = ['unix:/var/run/redis/redis.sock', 0];
+// $config['dispatch_server']['redis_slave'] = ['unix:/var/run/redis/redis.sock', 0];
 
 //异步服务是否启动一个新进程（启动后异步效率会降低2倍，但维护连接池只有一个）
 $config['asyn_process_enable'] = false;
 
 //是否启动集群模式
-$config['use_dispatch'] = false;
+$config['use_dispatch'] = true;
 
 //是否启用自动reload
 $config['auto_reload_enable'] = true;

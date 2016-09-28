@@ -13,10 +13,10 @@ $config['redis']['active'] = 'test';
 /**
  * 本地环境
  */
-$config['redis']['test']['ip'] = 'localhost';
+$config['redis']['test']['ip'] = '127.0.0.1';
 $config['redis']['test']['port'] = 6379;
-$config['redis']['test']['select'] = 5;
-//$config['redis']['test']['password'] = '';
+$config['redis']['test']['select'] = 1;
+// $config['redis']['test']['password'] = '123456';
 $config['redis']['asyn_max_count'] = 10;
 
 /**
