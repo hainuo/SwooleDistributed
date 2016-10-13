@@ -26,5 +26,11 @@
       "homepage": "https://github.com/tmtbe",
       "role": "Developer"
     }
-  ]
+  ],
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
+    }
+  }
 }
